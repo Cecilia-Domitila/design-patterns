@@ -1,0 +1,4 @@
+enum PackageTypeEnum {
+
+    BOX, ENVELOPE;
+}
