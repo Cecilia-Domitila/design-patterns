@@ -1,6 +1,6 @@
 abstract class PackageSize {
 
-    protected String description;
+    String description;
 
     String getDescription() {
         return description;

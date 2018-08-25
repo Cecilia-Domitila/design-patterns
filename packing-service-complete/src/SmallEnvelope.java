@@ -1,11 +1,11 @@
-public class SmallEnvelope extends PackageSize {
+class SmallEnvelope extends PackageSize {
 
-    public SmallEnvelope() {
+    SmallEnvelope() {
         description = "small envelope";
     }
 
     @Override
-    public String getSize() {
+    String getSize() {
         return "10cm x 30cm";
     }
 }

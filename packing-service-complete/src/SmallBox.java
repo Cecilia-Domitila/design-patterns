@@ -1,11 +1,11 @@
-public class SmallBox extends PackageSize {
+class SmallBox extends PackageSize {
 
-    public SmallBox() {
+    SmallBox() {
         description = "small size box";
     }
 
     @Override
-    public String getSize() {
+    String getSize() {
         return "up to 100 linear centimeters";
     }
 }

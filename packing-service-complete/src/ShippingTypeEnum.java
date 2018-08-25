@@ -1,0 +1,4 @@
+enum ShippingTypeEnum {
+
+    LAND, AIR;
+}

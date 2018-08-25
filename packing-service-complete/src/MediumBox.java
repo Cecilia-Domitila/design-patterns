@@ -5,7 +5,7 @@ class MediumBox extends PackageSize {
     }
 
     @Override
-    public String getSize() {
+    String getSize() {
         return "up to 300 linear centimeters";
     }
 }
