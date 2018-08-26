@@ -12,19 +12,19 @@ class PackageContent {
         this.dangerous = dangerous;
     }
 
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 
-    public boolean isFragile() {
+    boolean isFragile() {
         return fragile;
     }
 
-    public boolean isLiquid() {
+    boolean isLiquid() {
         return liquid;
     }
 
-    public boolean isDangerous() {
+    boolean isDangerous() {
         return dangerous;
     }
 }

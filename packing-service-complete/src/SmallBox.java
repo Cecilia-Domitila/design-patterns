@@ -1,11 +1,12 @@
-class SmallBox extends PackageSize {
+class SmallBox implements PackageSize {
 
-    SmallBox() {
-        description = "small size box";
+    @Override
+    public String getDescription() {
+        return "small size box";
     }
 
     @Override
-    String getSize() {
+    public String getSize() {
         return "up to 100 linear centimeters";
     }
 }

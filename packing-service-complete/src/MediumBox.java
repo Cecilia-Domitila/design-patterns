@@ -1,11 +1,12 @@
-class MediumBox extends PackageSize {
+class MediumBox implements PackageSize {
 
-    MediumBox() {
-        description = "medium size box";
+    @Override
+    public String getDescription() {
+        return "medium size box";
     }
 
     @Override
-    String getSize() {
+    public String getSize() {
         return "up to 300 linear centimeters";
     }
 }

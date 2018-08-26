@@ -1,7 +1,12 @@
-public class LandShipping extends ShippingType {
+class LandShipping implements ShippingType {
 
     @Override
-    String get() {
+    public String getDescription() {
+        return "land shipping";
+    }
+
+    @Override
+    public String ship() {
         return "shipping by land";
     }
 }

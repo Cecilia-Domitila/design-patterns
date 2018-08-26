@@ -1,4 +1,4 @@
-abstract class PackageSizeFactory {
+interface PackageSizeFactory {
 
-    abstract PackageSize create(SizeEnum size);
+    PackageSize create(SizeEnum size);
 }

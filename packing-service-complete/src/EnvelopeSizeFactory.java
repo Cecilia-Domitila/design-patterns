@@ -1,7 +1,7 @@
-class EnvelopeSizeFactory extends PackageSizeFactory {
+class EnvelopeSizeFactory implements PackageSizeFactory {
 
     @Override
-    PackageSize create(SizeEnum size) {
+    public PackageSize create(SizeEnum size) {
         PackageSize packageSize = null;
 
         switch (size) {

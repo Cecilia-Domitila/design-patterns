@@ -1,11 +1,12 @@
-class LargeEnvelope extends PackageSize {
+class LargeEnvelope implements PackageSize {
 
-    LargeEnvelope() {
-        description = "large envelope";
+    @Override
+    public String getDescription() {
+        return "large envelope";
     }
 
     @Override
-    String getSize() {
+    public String getSize() {
         return "45cm x 60cm";
     }
 }

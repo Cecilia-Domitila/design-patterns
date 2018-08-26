@@ -1,11 +1,12 @@
-class LargeBox extends PackageSize {
+class LargeBox implements PackageSize {
 
-    LargeBox() {
-        description = "large size box";
+    @Override
+    public String getDescription() {
+        return "large size box";
     }
 
     @Override
-    String getSize() {
+    public String getSize() {
         return "up to 500 linear centimeters";
     }
 }

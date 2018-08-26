@@ -8,10 +8,6 @@ class Package {
     private PackageType packageType;
     private PackageContent packageContent;
 
-    void setPackageType(PackageType packageType) {
-        this.packageType = packageType;
-    }
-
     void setMailingInformation(MailingInformation mailingInformation) {
         this.mailingInformation = mailingInformation;
     }
@@ -20,12 +16,16 @@ class Package {
         this.shippingType = shippingType;
     }
 
+    void setPackageType(PackageType packageType) {
+        this.packageType = packageType;
+    }
+
     void setPackageContent(PackageContent packageContent) {
         this.packageContent = packageContent;
     }
 
-    void send() {
-        System.out.println("Sending package...!!");
+    void ship() {
+        System.out.println(shippingType.ship());
         System.out.println("\n");
         folio = new Random().nextInt(1000000);
         print();
@@ -58,7 +58,7 @@ class Package {
     private void printShippingType() {
         System.out.println("SHIPPING INFORMATION");
         System.out.println("--------------");
-        System.out.println("- Type: " + shippingType.get());
+        System.out.println("- Type: " + shippingType.getDescription());
         System.out.println("\n");
     }
 

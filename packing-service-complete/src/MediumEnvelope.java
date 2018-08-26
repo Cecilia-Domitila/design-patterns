@@ -1,11 +1,12 @@
-class MediumEnvelope extends PackageSize {
+class MediumEnvelope implements PackageSize {
 
-    MediumEnvelope() {
-        description = "medium size envelope";
+    @Override
+    public String getDescription() {
+        return "medium size envelope";
     }
 
     @Override
-    String getSize() {
+    public String getSize() {
         return "30cm x 40cm";
     }
 }

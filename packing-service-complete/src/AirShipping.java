@@ -1,7 +1,12 @@
-public class AirShipping extends ShippingType {
+class AirShipping implements ShippingType {
 
     @Override
-    String get() {
-        return "shippipng by air";
+    public String getDescription() {
+        return "air shipping";
+    }
+
+    @Override
+    public String ship() {
+        return "shipping by air";
     }
 }

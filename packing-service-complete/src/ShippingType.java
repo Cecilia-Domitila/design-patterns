@@ -1,4 +1,6 @@
-abstract class ShippingType {
+interface ShippingType {
 
-    abstract String get();
+    String getDescription();
+
+    String ship();
 }

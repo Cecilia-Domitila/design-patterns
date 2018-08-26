@@ -1,10 +1,6 @@
-abstract class PackageSize {
+interface PackageSize {
 
-    String description;
+    String getDescription();
 
-    String getDescription() {
-        return description;
-    }
-
-    abstract String getSize();
+    String getSize();
 }

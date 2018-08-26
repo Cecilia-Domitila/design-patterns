@@ -23,7 +23,7 @@ public class PackingService {
         pack.setPackageType(packageType);
         pack.setPackageContent(packageContent);
 
-        pack.send();
+        pack.ship();
     }
 
     private static void sendPackageTwo() {
@@ -44,6 +44,6 @@ public class PackingService {
         pack.setPackageType(packageType);
         pack.setPackageContent(packageContent);
 
-        pack.send();
+        pack.ship();
     }
 }

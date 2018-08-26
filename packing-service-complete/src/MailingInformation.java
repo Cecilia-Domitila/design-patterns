@@ -18,7 +18,7 @@ class MailingInformation {
         return senderAddress;
     }
 
-    public MailingInformation setSenderAddress(String senderAddress) {
+    MailingInformation setSenderAddress(String senderAddress) {
         this.senderAddress = senderAddress;
         return this;
     }
@@ -27,7 +27,7 @@ class MailingInformation {
         return receiverName;
     }
 
-    public MailingInformation setReceiverName(String receiverName) {
+    MailingInformation setReceiverName(String receiverName) {
         this.receiverName = receiverName;
         return this;
     }
@@ -36,7 +36,7 @@ class MailingInformation {
         return receiverAddress;
     }
 
-    public MailingInformation setReceiverAddress(String receiverAddress) {
+    MailingInformation setReceiverAddress(String receiverAddress) {
         this.receiverAddress = receiverAddress;
         return this;
     }
