@@ -2,7 +2,17 @@ package packing.type;
 
 import mailing.MailInfo;
 import packing.content.PackageContent;
+import packing.size.PackageSizeEnum;
 import shipment.mode.ShipmentMode;
+
+import util.Printer;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import shipment.mode.ShipmentModeEnum;
+import shipment.mode.ShipmentModeFactory;
+import shipment.time.DeliveryTimeEnum;
 
 public abstract class AbstractPackage {
 
@@ -15,12 +25,12 @@ public abstract class AbstractPackage {
         this.mailInfo = mailInfo;
     }
 
-    public void setShippingMode(ShipmentMode shippingMode) {
-        this.shippingMode = shippingMode;
+    public void setShippingMode(ShipmentModeEnum shippingModeEnum, DeliveryTimeEnum deliveryTimeEnum) {
+        this.shippingMode = ShipmentModeFactory.create(shippingModeEnum, deliveryTimeEnum);
     }
 
-    public void setPackageType(PackageType packageType) {
-        this.packageType = packageType;
+    public void setPackageType(PackageTypeEnum packageTypeEnum, PackageSizeEnum packageSizeEnum) {
+        this.packageType = PackageTypeFactory.create(packageTypeEnum, packageSizeEnum);
     }
 
     public void setPackageContent(PackageContent packageContent) {
@@ -28,49 +38,58 @@ public abstract class AbstractPackage {
     }
 
     public void shipAndPrintTicket() {
-        System.out.println("SHIPPING");
-        System.out.println("--------------");
-        shippingMode.ship();
-        printTicket();
+        Printer printer = new PrinterImpl();
+        printer.print("MAILING INFORMATION", buildPackageMailingInformationMap());
+        printer.print("PACKAGE INFORMATION", buildPackageDescriptionMap());
+        printer.print("SHIPPING INFORMATION", buildShipmentInformationMap());
+        System.out.println("****************************************");
     }
 
-    private void printTicket() {
-        printPackageDescription();
-        printMailInfo();
+    private Map<String, String> buildPackageMailingInformationMap() {
+        Map<String, String> info = new LinkedHashMap<>();
+        info.put("Sender's name", mailInfo.getSenderName());
+        info.put("Sender's address", mailInfo.getSenderAddress());
+        info.put("Receiver's name", mailInfo.getReceiverName());
+        info.put("Receiver's address", mailInfo.getReceiverAddress());
+        return info;
     }
 
-    private void printPackageDescription() {
-        System.out.println("\n");
-        System.out.println("PACKAGE INFORMATION");
-        System.out.println("--------------");
-        System.out.println("- Type: " + packageType.getName() + " (" + packageType.getDescription() + ")");
-        System.out.println("- Size: " + packageType.getPackageSize().getDescription() +
+    private Map<String,String> buildPackageDescriptionMap() {
+        Map<String, String> description = new LinkedHashMap<>();
+        description.put("Type", packageType.getName() + " (" + packageType.getDescription() + ")");
+        description.put("Size", packageType.getPackageSize().getDescription() +
                 " (" + packageType.getPackageSize().getSize() + ")");
-
-        System.out.println("- Content: " + packageContent.getDescription());
+        description.put("Content", packageContent.getDescription());
 
         if (packageContent.isFragile()) {
-            System.out.println("- (F) Fragile");
+            description.put("(F)", "Fragile");
         }
 
         if (packageContent.isLiquid()) {
-            System.out.println("- (L) Liquid");
+            description.put("(L)", "Liquid");
         }
 
         if (packageContent.isDangerous()) {
-            System.out.println("- (D) Dangerous");
+            description.put("(D)", "Dangerous");
         }
 
-        System.out.println("\n");
+        return description;
     }
 
-    private void printMailInfo() {
-        System.out.println("MAIL INFO");
-        System.out.println("--------------");
-        System.out.println("- Sender's name: " + mailInfo.getSenderName());
-        System.out.println("- Sender's address: " + mailInfo.getSenderAddress());
-        System.out.println("- Receiver's name: " + mailInfo.getReceiverName());
-        System.out.println("- Receiver's description: " + mailInfo.getReceiverAddress());
-        System.out.println("\n");
+    private Map<String, String> buildShipmentInformationMap() {
+        return shippingMode.getShipmentInfo();
+    }
+
+    class PrinterImpl implements Printer {
+        public void print(String title, Map<String, String> information) {
+            System.out.println("\n");
+            System.out.println(title);
+            System.out.println("--------------");
+            for(Map.Entry<String, String> e : information.entrySet()) {
+                String key = e.getKey();
+                String value = e.getValue();
+                System.out.println("- " + key + ": " + value);
+            }
+        }
     }
 }
